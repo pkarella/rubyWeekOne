@@ -1,16 +1,23 @@
 class String
   define_method(:anagram)do |wordtwo|
-word= self.downcase.split("")
-wordtwo= wordtwo.downcase.split("")
-wordarray=[]
-if word.uniq.sort == wordtwo.uniq.sort
- wordarray.push("its an anagram")
-else
-  wordarray.push("not an anagram")
+vowels=["a","e","i","o","u","y"]
+word= self.downcase.delete(' ').split("")
+wordtwo= wordtwo.downcase.delete(' ').split("")
+wordarrayone=[]
+wordarraytwo=[]
+both_words = word & wordtwo
+if both_words.length == 0
+  wordarrayone.push("These words have no letter matches this is an antigram")
+elsif word.uniq.sort == wordtwo.uniq.sort
+wordarrayone.push("its an anagram")
+else word.uniq.sort != wordtwo.uniq.sort
+  wordarrayone.push("not an anagram")
 end
 if word == wordtwo.reverse
-  wordarray.push("and this is also a palindrome")
+  wordarrayone.push("and this is also a palindrome")
 end
-wordarray.join(" ")
+
+wordarrayone.join(" ")
 end
+
 end
