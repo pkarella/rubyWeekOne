@@ -9,8 +9,8 @@ else
   wordarray.push("not an anagram")
 end
 if word == wordtwo.reverse
-  wordarray.push(" and this is also a palindrome")
+  wordarray.push("and this is also a palindrome")
 end
-wordarray.join("")
+wordarray.join(" ")
 end
 end
