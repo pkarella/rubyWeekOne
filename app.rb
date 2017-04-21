@@ -2,19 +2,16 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/anagram')
 also_reload('lib/**/*.rb')
+
 get('/') do
   erb(:anagram)
 end
 get('/result')do
-player1 = params.fetch('player1')
-player2 = params.fetch('player2')
+player1 = params.fetch('one')
+player2 = params.fetch('two')
 
-if self.iswinner(player2)=='true'
-  @winner = 'Player 1 Wins!'
-elsif self.iswinner(player2)=='false'
-  @winner = 'Player 2 Wins!'
-else
-  @winner = 'Draw!'
+if self.anagram(two)=='true'
+  @winner = 'its an anagram and this is also a palindrome'
 end
 erb(:results)
 end
