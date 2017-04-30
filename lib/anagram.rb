@@ -2,8 +2,10 @@ class String
   define_method(:anagram) do |wordtwo|
     vowels=["a","e","i","o","u","y"]
     wordarrayone=[]
-    wordtwo= wordtwo.downcase.delete(' ').split("")
-    word= self.downcase.delete(' ').split("")
+    wordtwo= wordtwo.downcase.delete("^a-z").split("").sort
+    word= self.downcase.delete("^a-z").split("").sort
+
+
     words= word + wordtwo
     word_or_not=0
   words.each()do |letter|
@@ -14,22 +16,19 @@ end
 if word_or_not>=1
   result=true
 else
-result = wordarrayone.push("this is not a word")
+result = false
 end
-if word.sort == wordtwo.sort
-wordarrayone.push("its an anagram")
-else word.sort != wordtwo.sort
-wordarrayone.push("not an anagram")
-end
-if word == wordtwo.reverse
- wordarrayone.push("and this is also a palindrome")
- end
- word.each()do |words|
-if wordtwo.include?(words)
- else
-  return wordarrayone.push("this is an antigram")
-end
-end
-wordarrayone.join(' ')
-end
+if result==false
+   wordarrayone.push("this is not a word").join(" ")
+ elsif result==true && (word  & wordtwo).empty?
+      wordarrayone.push("antigram!")
+  elsif word == wordtwo.reverse
+      wordarrayone.push("palindrome!")
+  elsif  word == wordtwo
+       wordarrayone.push("anagrams!")
+  else
+       wordarrayone.push("not an anagram!")
+     end
+wordarrayone.join(" ")
+  end
 end

@@ -1,8 +1,8 @@
 require ('rspec')
 require ('anagram')
 
-describe(String)do
-describe('#anagram') do
+
+describe('String#anagram') do
   it("returns wether two words are an anagram") do
     expect("dog".anagram("gdo")).to(eq("its an anagram"))
   end
@@ -18,5 +18,4 @@ describe('#anagram') do
   it("an anagram sentence will return as an anagram" ) do
     expect("gto kilm rof ookiec".anagram("got milk for cookie")).to(eq("its an anagram"))
   end
-end
 end
