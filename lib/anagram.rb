@@ -1,20 +1,25 @@
 class String
- define_method(:anagram) do |wordtwo|
- vowels = true
-word= self.downcase.delete(' ').split("")
-wordtwo= wordtwo.downcase.delete(' ').split("")
-wordarrayone=[]
-both_words = word & wordtwo
-# both_words.each()do |letters|
-#   if letters.join().scan(/[aeiouy]/).count <1
-#    wordarrayone.push("this is not a word")
-# end
-# end
-
-if word.uniq.sort == wordtwo.uniq.sort
+  define_method(:anagram) do |wordtwo|
+    vowels=["a","e","i","o","u","y"]
+    wordarrayone=[]
+    wordtwo= wordtwo.downcase.delete(' ').split("")
+    word= self.downcase.delete(' ').split("")
+    words= word + wordtwo
+    word_or_not=0
+  words.each()do |letter|
+    if vowels.include?(letter)
+    word_or_not+=1
+  end
+end
+if word_or_not>=1
+  result=true
+else
+result = wordarrayone.push("this is not a word")
+end
+if word.sort == wordtwo.sort
 wordarrayone.push("its an anagram")
-else word.uniq.sort != wordtwo.uniq.sort
- wordarrayone.push("not an anagram")
+else word.sort != wordtwo.sort
+wordarrayone.push("not an anagram")
 end
 if word == wordtwo.reverse
  wordarrayone.push("and this is also a palindrome")
@@ -23,8 +28,8 @@ if word == wordtwo.reverse
 if wordtwo.include?(words)
  else
   return wordarrayone.push("this is an antigram")
- end
+end
 end
 wordarrayone.join(' ')
- end
+end
 end
