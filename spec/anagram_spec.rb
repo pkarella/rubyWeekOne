@@ -7,7 +7,7 @@ describe('String#anagram') do
     expect("dog".anagram("gdo")).to(eq("its an anagram"))
   end
   it("returns wether two words are an anagram") do
-    expect("dog".anagram("god")).to(eq("its an anagram and this is also a palindrome"))
+    expect("dog".anagram("god")).to(eq("this is a palindrome"))
   end
   it("returns the answer no matter the cases put in") do
     expect("Doggy".anagram("godgy")).to(eq("its an anagram"))
@@ -17,5 +17,8 @@ describe('String#anagram') do
   end
   it("an anagram sentence will return as an anagram" ) do
     expect("gto kilm rof ookiec".anagram("got milk for cookie")).to(eq("its an anagram"))
+  end
+  it("if none of the above conditions apply") do
+    expect("dogg".anagram("dog")).to(eq("not an anagram"))
   end
 end
